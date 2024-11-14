@@ -1,0 +1,326 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+header {
+  background-color: #6200ea;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Floating + Button */
+.floating-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Bottom Navigation Menu */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ccc;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.bottom-nav button img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;
+}
+
+.bottom-nav button span {
+  color: #333;
+}
+
+.bottom-nav button:hover span {
+  color: #6200ea;
+}
+
+/* Popup Form */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+}
+
+.popup-content label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.form-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-buttons button:hover {
+  background: #3700b3;
+}
+
+.form-buttons button[type="reset"] {
+  background: #bdbdbd;
+}
+
+.form-buttons button[type="reset"]:hover {
+  background: #757575;
+}
+
+/* Table Styling */
+table {
+  margin: 20px auto; /* Center the table */
+  border-collapse: separate; /* Separate border for spacing */
+  border-spacing: 15px 10px; /* Horizontal and vertical spacing */
+  width: 90%; /* Adjust width to fit within content */
+  background-color: #ffffff;
+  border: 1px solid #ddd; /* Add a light border around the table */
+}
+
+th, td {
+  padding: 12px 15px; /* Space inside each cell */
+  border: 1px solid #ddd; /* Border for each cell */
+  text-align: left;
+}
+
+th {
+  background-color: #6200ea;
+  color: white;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+/* Table Headers */
+th, td {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.highlighted {
+  background-color: #d3d3d3; /* Light gray background for highlighted row */
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#dateRangePopup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#dateRangePopup form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#dateRangePopup button {
+  margin-top: 10px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.filter-container {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-container label,
+.filter-container input,
+.filter-container button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-container button {
+    margin-right: 10px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.filter-container {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-container label,
+.filter-container input,
+.filter-container button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-container button {
+    margin-right: 10px;
+}
+
+/* Highlighted row style */
+.highlighted {
+  background-color: darkblue; /* Optional: Change this to your preferred highlight color */
+}
+
+/* Completed row style */
+.completed {
+  background-color: white;
+  color: darkgreen; /* Optional: Ensure text is readable on a dark background */
+}
+
+body {
+    font-family: Arial, sans-serif, Bold;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color:  Lightblue;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#timerDisplay {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+
+.header-image {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 20px; /* Space between text and image */
+
+
+
+ 
+
+
+
+
+
+
+
+

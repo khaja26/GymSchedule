@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Gym Schedule</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Gym Schedule</h1>
+        <img src="icons/gym.png" alt="Gym" class="header-image">
+  </header>
+
+  <main>
+    <!-- Floating + Button -->
+    <button id="addButton" class="floating-button">+</button>
+
+    <!-- Display Table -->
+<div id="dataDisplay" class="data-display hidden" style="text-align: center;">
+    <h2>Saved Activities</h2>
+   <table id="dataTable" style="margin: 0 auto; border: 0px solid black;">  
+        <thead>
+            <tr>
+                <th>Date</th> 
+                <th>Day</th>
+                <th>Activity</th>                
+	<th>Hours</th>                
+	<th>Minutes</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <!-- Data will be appended here dynamically -->
+       </tbody>  
+ </table>
+</div>
+
+
+  </main>
+
+  <!-- Bottom Navigation Menu -->
+  <nav class="bottom-nav">
+    <button id="completedButton">
+      <img src="icons/completed.png" alt="Completed Icon">
+      <span>Completed</span>
+    </button>
+    <button id="editButton">
+      <img src="icons/edit.png" alt="Edit Icon">
+      <span>Edit</span>
+    </button>    
+    <button id="shareButton">
+      <img src="icons/share.png" alt="Share Icon">
+      <span>Share</span>
+    </button>
+    <button id="showButton">
+      <img src="icons/show.png" alt="Show Icon">
+      <span>Show</span>
+    </button>
+    <button id="moveButton">
+      <img src="icons/move.png" alt="Move Icon">
+      <span>Move</span>
+    </button>
+    <button id="timerButton">
+      <img src="icons/timer.png" alt="Move Icon">
+      <span>Timer</span>
+    </button>
+    <button id="deleteButton">
+      <img src="icons/delete.png" alt="Delete Icon">
+      <span>Delete</span>
+    </button>     
+  </nav>
+
+  <!-- Popup Form -->
+  <div id="popupForm" class="popup hidden">
+    <div class="popup-content">
+      <h2>Enter Activity</h2>
+      <form id="activityForm">
+        <label for="activityDate">Date:</label>
+        <input type="date" id="activityDate" required>
+        <p id="dayDisplay"></p>
+        
+        <label for="activityText">Activity:</label>
+        <input type="text" id="activityText" placeholder="Enter activity" required>
+        
+        <label for="activityHours">Hours:</label>
+        <input type="number" id="activityHours" placeholder="Hours" min="0" max="24" required>
+        
+        <label for="activityMinutes">Minutes:</label>
+        <input type="number" id="activityMinutes" placeholder="Minutes" min="0" max="59" required>
+
+        <div class="form-buttons">
+          <button type="button" id="submitButton">Submit</button>
+          <button type="reset" id="clearButton">Clear</button>
+          <button type="button" id="cancelButton">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- Add New Activity Popup Form -->
+<div id="addActivityPopup" class="popup hidden">
+  <div class="popup-content">
+    <h2>Add New Activity</h2>
+    <form id="addActivityForm">
+      <label for="addActivityDate">Date:</label>
+      <input type="date" id="addActivityDate" required>
+      <p id="addDayDisplay"></p>
+
+      <label for="addActivityText">Activity:</label>
+      <input type="text" id="addActivityText" placeholder="Enter activity" required>
+
+      <label for="addActivityHours">Hours:</label>
+      <input type="number" id="addActivityHours" placeholder="Hours" min="0" max="24" required>
+
+      <label for="addActivityMinutes">Minutes:</label>
+      <input type="number" id="addActivityMinutes" placeholder="Minutes" min="0" max="59" required>
+
+      <div class="form-buttons">
+        <button type="button" id="addSubmitButton">Add</button>
+        <button type="reset" id="addClearButton">Clear</button>
+        <button type="button" id="addCancelButton">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Activity Popup Form -->
+<div id="editActivityPopup" class="popup hidden">
+  <div class="popup-content">
+    <h2>Edit Activity</h2>
+    <form id="editActivityForm">
+      <label for="editActivityDate">Date:</label>
+      <input type="date" id="editActivityDate" required>
+      <p id="editDayDisplay"></p>
+
+      <label for="editActivityText">Activity:</label>
+      <input type="text" id="editActivityText" placeholder="Enter activity" required>
+
+      <label for="editActivityHours">Hours:</label>
+      <input type="number" id="editActivityHours" placeholder="Hours" min="0" max="24" required>
+
+      <label for="editActivityMinutes">Minutes:</label>
+      <input type="number" id="editActivityMinutes" placeholder="Minutes" min="0" max="59" required>
+
+      <div class="form-buttons">
+        <button type="button" id="editSubmitButton">Update</button>
+        <button type="button" id="editCancelButton">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div> 
+
+    <div id="dateFilter" class="filter-container hidden">
+        <form id="dateRangeForm">
+            <label for="fromDate">From:</label>
+            <input type="date" id="fromDate" required><br>
+            <label for="toDate">To:</label>
+            <input type="date" id="toDate" required><br>
+            <button type="button" id="showDataButton">Show Data</button>
+            <button type="button" id="cancelButton">Cancel</button>
+        </form>
+    </div>
+ <div id="timerPopup" class="popup hidden">
+        <div class="popup-content">
+            <h2>Set Timer</h2>
+            <label for="minutes">Minutes:</label>
+            <input type="number" id="minutes" min="0" placeholder="0">
+            <label for="seconds">Seconds:</label>
+            <input type="number" id="seconds" min="0" max="59" placeholder="0">
+            <button id="startTimerButton">Start Timer</button>
+            <button id="cancelTimerButton">Cancel</button>
+            <div id="timerDisplay" class="hidden"></div>
+        </div>
+    </div>
+ 
+</div>
+
+   
+  <script src="script.js"></script>
+</body>
+</html>
